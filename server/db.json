@@ -5,7 +5,11 @@
             "questions": [
                 {
                     "id": 1,
-                    "type": 2,
+                    "type": {
+                        "select": true,
+                        "text": false
+                    },
+                    "conditional": false,
                     "required": true,
                     "question": "What language is your favorite?",
                     "answer": [
@@ -16,14 +20,36 @@
                 },
                 {
                     "id": 2,
-                    "type": 1,
+                    "type": {
+                        "select": false,
+                        "text": true
+                    },
+                    "conditional": {
+                        "questionId": 1,
+                        "answerIndex": 1
+                    },
                     "required": false,
-                    "question": "What do you like about programing?",
-                    "answer": "Your answer"
+                    "question": "Why do you like TypeScript",
+                    "answer": ""
                 },
                 {
                     "id": 3,
-                    "type": 3,
+                    "type": {
+                        "select": false,
+                        "text": true
+                    },
+                    "conditional": false,
+                    "required": false,
+                    "question": "What do you like about programing?",
+                    "answer": ""
+                },
+                {
+                    "id": 4,
+                    "type": {
+                        "select": true,
+                        "text": true
+                    },
+                    "conditional": false,
                     "required": true,
                     "question": "How was the assignment?",
                     "answer": [
@@ -35,25 +61,11 @@
             ]
         }
     ],
-    "types": [
-        {
-            "id": 1,
-            "method": "Typing text"
-        },
-        {
-            "id": 2,
-            "method": "Radio selection"
-        },
-        {
-            "id": 3,
-            "method": "Radio selection or other"
-        }
-    ],
     "answers": [
         {
             "id": 1,
             "name": "Lex Luther",
-            "questionnaireId": 1,
+            "questionnaire": 1,
             "answers": [
                 {
                     "questionId": 1,
@@ -61,10 +73,14 @@
                 },
                 {
                     "questionId": 2,
-                    "answer": "Building things from scratch"
+                    "answer": "I like strong typisation"
                 },
                 {
                     "questionId": 3,
+                    "answer": "Building things from scratch"
+                },
+                {
+                    "questionId": 4,
                     "answer": "Incredible"
                 }
             ]
