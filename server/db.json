@@ -1,0 +1,73 @@
+{
+    "questionnaires": [
+        {
+            "id": 1,
+            "questions": [
+                {
+                    "id": 1,
+                    "type": 2,
+                    "required": true,
+                    "question": "What language is your favorite?",
+                    "answer": [
+                        "Javascript",
+                        "TypeScript",
+                        "CoffeeScript"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "type": 1,
+                    "required": false,
+                    "question": "What do you like about programing?",
+                    "answer": "Your answer"
+                },
+                {
+                    "id": 3,
+                    "type": 3,
+                    "required": true,
+                    "question": "How was the assignment?",
+                    "answer": [
+                        "Easy",
+                        "Normal",
+                        "Hard"
+                    ]
+                }
+            ]
+        }
+    ],
+    "types": [
+        {
+            "id": 1,
+            "method": "Typing text"
+        },
+        {
+            "id": 2,
+            "method": "Radio selection"
+        },
+        {
+            "id": 3,
+            "method": "Radio selection or other"
+        }
+    ],
+    "answers": [
+        {
+            "id": 1,
+            "name": "Lex Luther",
+            "questionnaireId": 1,
+            "answers": [
+                {
+                    "questionId": 1,
+                    "answer": "TypeScript"
+                },
+                {
+                    "questionId": 2,
+                    "answer": "Building things from scratch"
+                },
+                {
+                    "questionId": 3,
+                    "answer": "Incredible"
+                }
+            ]
+        }
+    ]
+}
