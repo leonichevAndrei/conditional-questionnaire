@@ -7,6 +7,7 @@ export default function AnswerSelect(props: AnswerComponentProps) {
     const { answerGetById, question, answers, setAnswers } = props.propsCombine;
 
     const propsCombine = {
+        other: false,
         question: question,
         updateHandler: (e: React.FormEvent<HTMLInputElement>) => {
             updateAnswersState(e, answerGetById, question, answers, setAnswers);

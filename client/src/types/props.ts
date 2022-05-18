@@ -21,6 +21,7 @@ export type AnswerComponentTextProps = {
 }
 export type AnswerComponentSelectProps = {
     propsCombine: {
+        other: boolean,
         question: QuestionType,
         updateHandler: (e: React.FormEvent<HTMLInputElement>) => void
     }

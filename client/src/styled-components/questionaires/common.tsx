@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR } from "../../settings/theme";
+import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR, MAX_INPUT_WIDTH } from "../../settings/theme";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -90,15 +90,18 @@ export const QuestSubmitButton = styled.button`
 
 export const QuestionWrap = styled(SomeWrap)`
     margin-top: ${MARGIN_MID};
-    padding: ${MARGIN_MID} ${MARGIN_MAX};
+    padding: ${MARGIN_MAX} ${MARGIN_MAX};
     ${BOX_SHADOW_ELMS};
 `;
 
 export const QuestionText = styled.div`
 `;
 
+export const QuestionBetween = styled.div`
+    height: ${MARGIN_MID};
+`;
+
 export const QuestionAnswer = styled.div`
-    padding-top: ${MARGIN_MID};
 `;
 
 export const AnswerTextInput = styled.input`
@@ -115,6 +118,24 @@ export const AnswerTextInput = styled.input`
         color: ${SECONDARY_COLOR};
     }
     transition: border 1s, width 2s;
+    margin-top: ${MARGIN_MID};
+    @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
+        max-width: ${MAX_INPUT_WIDTH};
+    }
+`;
+
+type AnswerTextInputPlusProps = {
+    activated: boolean
+}
+
+export const AnswerTextInputPlus = styled(AnswerTextInput)`
+    color: ${(props: AnswerTextInputPlusProps) => {
+        return props.activated ? "black" : SECONDARY_COLOR;
+    }};
+        @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
+        max-width: calc(${MAX_INPUT_WIDTH} - 103px);
+    }
+    margin-top: 0;
 `;
 
 export const AnswerSelectList = styled.div`
@@ -123,12 +144,25 @@ export const AnswerSelectList = styled.div`
 export const AnswerSelectItem = styled.div`
     display: flex;
     flex-direction: row;
-    padding-bottom: ${MARGIN_MID};
+    padding-top: ${MARGIN_MID};
 `;
 
 export const AnswerSelectLabel = styled.div`
     font-size: 0.9em;
     padding-left: ${MARGIN_MIN};
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+`;
+
+export const AnswerSelectText = styled.div`
+    padding-right: ${MARGIN_MID};
+`;
+
+export const AnswerSelectInput = styled.div`
+    flex-grow: 1;
+    position: relative;
+    top: -4px;
 `;
 
 export const RadioItem = styled.div`
