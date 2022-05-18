@@ -5,13 +5,13 @@ import updateAnswersState from "../../utills/update-answers-state";
 
 export default function AnswerSelect(props: AnswerComponentProps) {
 
-    const { answersArr, answerGetById, question, answers, setAnswers } = props.propsCombine;
+    const { answerGetById, question, answers, setAnswers } = props.propsCombine;
 
     const [select, setSelect] = useState("");
 
     const handleSelectChange = (e: React.FormEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value;
-        updateAnswersState(e, answersArr, answerGetById, question, answers, setAnswers)
+        updateAnswersState(e, answerGetById, question, answers, setAnswers)
         setSelect(value);
     };
 

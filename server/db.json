@@ -66,7 +66,7 @@
             "id": 1,
             "name": "Lex Luther",
             "questionnaire": 1,
-            "answers": [
+            "list": [
                 {
                     "questionId": 1,
                     "answer": "TypeScript"

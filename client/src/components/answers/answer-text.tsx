@@ -1,16 +1,17 @@
-import { AnswerTextInput } from "../../styled-components/questionaires/common";
 import { AnswerComponentProps } from "../../types/props";
 import updateAnswersState from "../../utills/update-answers-state";
+import InputTextComponent from "./inputs/input-text";
 
 export default function AnswerText(props: AnswerComponentProps) {
 
-    const { answersArr, answerGetById, question, answers, setAnswers } = props.propsCombine;
+    const { answerGetById, question, answers, setAnswers } = props.propsCombine;
+    
+    const propsCombine = {
+        value: answers!.list[answerGetById[question.id]].answer,
+        updateHandler: (e: React.FormEvent<HTMLInputElement>) => {
+            updateAnswersState(e, answerGetById, question, answers, setAnswers)
+        }
+    }
 
-    return (
-        <AnswerTextInput
-            value={answersArr[answerGetById[question.id]].answer}
-            onInput={(e) => updateAnswersState(e, answersArr, answerGetById, question, answers, setAnswers)}
-            placeholder="Your answer"
-        />
-    );
+    return <InputTextComponent propsCombine={propsCombine} />;
 }

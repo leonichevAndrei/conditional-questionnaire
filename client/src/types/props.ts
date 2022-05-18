@@ -7,10 +7,15 @@ export type QuestionProps = {
 }
 export type AnswerComponentProps = {
     propsCombine: {
-        answersArr: AnswersAnswerType[],
         answerGetById: number[],
         question: QuestionType,
         answers: AnswersType | undefined,
         setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>
+    }
+}
+export type AnswerComponentTextProps = {
+    propsCombine: {
+        value: string,
+        updateHandler: (e: React.FormEvent<HTMLInputElement>) => void;
     }
 }

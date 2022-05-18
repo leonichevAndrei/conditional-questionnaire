@@ -8,13 +8,12 @@ import AnswerText from "../answers/answer-text";
 export default function Question(props: QuestionProps) {
 
     const { question, answers, setAnswers } = props;
-    const answersArr = answers!.answers;
     const [answerGetById, setAnswerGetById] = useState<number[]>(new Array());
 
     useEffect(() => {
         const arr = new Array();
         let ind = 0;
-        for (let answer of answersArr) {
+        for (let answer of answers!.list) {
             arr[answer.questionId] = ind;
             ind++;
         }
@@ -23,7 +22,6 @@ export default function Question(props: QuestionProps) {
 
     function buildAnswer(select: boolean, text: boolean) {
         const propsCombine = {
-            answersArr: answersArr,
             answerGetById: answerGetById,
             question: question,
             answers: answers,

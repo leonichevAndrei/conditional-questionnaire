@@ -22,7 +22,7 @@ export type AnswersType = {
     id: number,
     name: string,
     questionnaire: number,
-    answers: AnswersAnswerType[];
+    list: AnswersAnswerType[];
 }
 export type AnswersAnswerType = {
     questionId: number,
