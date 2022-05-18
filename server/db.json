@@ -26,7 +26,7 @@
                     },
                     "conditional": {
                         "questionId": 1,
-                        "answerIndex": 1
+                        "answer": "TypeScript"
                     },
                     "required": false,
                     "question": "Why do you like TypeScript",
