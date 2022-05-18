@@ -16,6 +16,12 @@ export type AnswerComponentProps = {
 export type AnswerComponentTextProps = {
     propsCombine: {
         value: string,
-        updateHandler: (e: React.FormEvent<HTMLInputElement>) => void;
+        updateHandler: (e: React.FormEvent<HTMLInputElement>) => void
+    }
+}
+export type AnswerComponentSelectProps = {
+    propsCombine: {
+        question: QuestionType,
+        updateHandler: (e: React.FormEvent<HTMLInputElement>) => void
     }
 }
