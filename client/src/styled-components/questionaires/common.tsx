@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { COL_PRIMARY, MARGIN_MID, BOX_SHADOW_ELMS, MARGIN_MAX, MARGIN_MIN, COL_PRIMARY_DARK, COL_BG, FONT_SIZE, FONT_FAMILY, MEDIA_BREAK_POINT, MAX_WIDTH_ON_BIG_SCREENS, WIDTH_ON_BIG_SCREENS, COL_PRIMARY_LIGHT, COL_ADDITIONAL, SECONDARY_COLOR } from "../../settings/theme";
+import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR } from "../../settings/theme";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
 export const QuestBody = styled.div`
     display: flex;
     flex-direction: column;
+    padding-bottom: ${MARGIN_MID};
     width: calc(100vw - (2 * ${MARGIN_MID}));
     @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
         width: ${WIDTH_ON_BIG_SCREENS};
@@ -114,4 +115,74 @@ export const AnswerTextInput = styled.input`
         color: ${SECONDARY_COLOR};
     }
     transition: border 1s, width 2s;
+`;
+
+export const AnswerSelectList = styled.div`
+`;
+
+export const AnswerSelectItem = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ${MARGIN_MID};
+`;
+
+export const AnswerSelectLabel = styled.div`
+    font-size: 0.9em;
+    padding-left: ${MARGIN_MIN};
+`;
+
+export const RadioItem = styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -5px;
+`;
+
+export const RadioButtonLabel = styled.label`
+  position: absolute;
+  top: 25%;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid black;
+`;
+
+export const RadioButton = styled.input`
+  opacity: 0;
+  z-index: 1;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  &:hover ~ ${RadioButtonLabel} {
+    background: white;
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      margin: 4px;
+      background: ${SECONDARY_COLOR};
+    }
+  }
+  
+  ${(props) =>
+    props.checked && ` 
+    &:checked + ${RadioButtonLabel} {
+      background: white;
+      border: 2px solid black;
+      &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        margin: 4px;
+        background: ${COL_PRIMARY_DARK};
+      }
+    }
+  `}
 `;

@@ -1,5 +1,5 @@
 import { AnswersEmptyTemplate } from "../settings/templates";
-import { AnswersAnswerType, AnswersType, QuestionnaireType } from "../types/common";
+import { AnswersType, QuestionnaireType } from "../types/common";
 
 export default function generateAnswers(questionnaire: QuestionnaireType): AnswersType {
     return {
