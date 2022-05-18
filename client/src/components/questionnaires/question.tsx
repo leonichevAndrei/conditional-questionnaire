@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { QuestionWrap, QuestionText, QuestionAnswer } from "../../styled-components/questionaires/common";
 import { QuestionProps } from "../../types/props"
 import AnswerSelect from "../answers/answer-select";
-import AnswerSelectText from "../answers/answer-select-text";
 import AnswerText from "../answers/answer-text";
 
 export default function Question(props: QuestionProps) {
@@ -31,9 +30,9 @@ export default function Question(props: QuestionProps) {
             if (select === false && text === true) {
                 return <AnswerText propsCombine={propsCombine} />;
             } else if (select === true && text === false) {
-                return <AnswerSelect propsCombine={propsCombine} />;
+                return <AnswerSelect propsCombine={{...propsCombine, other: false}} />;
             } else if (select === true && text === true) {
-                return <AnswerSelectText propsCombine={propsCombine} />;
+                return <AnswerSelect propsCombine={{...propsCombine, other: true}} />;
             } else {
                 return "Unsupported type detected";
             }

@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { specialVal } from "../../../settings/app-settings";
 import { AnswerSelectList, AnswerSelectItem, RadioItem, RadioButton, RadioButtonLabel, AnswerSelectLabel, AnswerSelectInput, AnswerSelectText, AnswerTextInputPlus } from "../../../styled-components/questionaires/common";
+import { EventType } from "../../../types/common";
 import { AnswerComponentSelectProps } from "../../../types/props";
 
 export default function InputSelectComponent(props: AnswerComponentSelectProps) {
@@ -7,21 +9,32 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
     const { other, question, updateHandler } = props.propsCombine;
 
     const [select, setSelect] = useState("");
+    const [inputValue, setInputValue] = useState(specialVal);
 
-    function handleSelectChange(e: React.FormEvent<HTMLInputElement>) {
+    function handleSelectChange(e: EventType) {
         setSelect(e.currentTarget.value);
         updateHandler(e);
     };
+    function inputValueHandler(e: EventType) {
+        setInputValue(e.currentTarget.value);
+        handleSelectChange(e);
+    }
+    function blurHandler(e: EventType) {
+        if (inputValue === "") {
+            setInputValue("");
+        }
+    }
 
     function getSelectItem(answer: string, ind: number, other: boolean) {
+        const value = other ? inputValue : answer;
         return (
             <AnswerSelectItem key={ind}>
                 <RadioItem>
                     <RadioButton
                         type="radio"
                         name={`radioGroup${question.id}`}
-                        value={answer}
-                        checked={select === answer}
+                        value={value}
+                        checked={select === value}
                         onChange={(event) => handleSelectChange(event)}
                     />
                     <RadioButtonLabel />
@@ -30,7 +43,13 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
                     <AnswerSelectText>{answer}</AnswerSelectText>
                     {other &&
                         <AnswerSelectInput>
-                            <AnswerTextInputPlus activated={false} />
+                            <AnswerTextInputPlus
+                                value={inputValue !== specialVal ? inputValue : ""}
+                                activated={false}
+                                onFocus={(e) => inputValueHandler(e)}
+                                onBlur={(e) => blurHandler(e)}
+                                onInput={(e) => inputValueHandler(e)}
+                            />
                         </AnswerSelectInput>
                     }
                 </AnswerSelectLabel>
@@ -49,5 +68,3 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
         </AnswerSelectList>
     );
 }
-
-

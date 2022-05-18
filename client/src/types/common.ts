@@ -28,3 +28,4 @@ export type AnswersAnswerType = {
     questionId: number,
     answer: string
 }
+export type EventType = React.FormEvent<HTMLInputElement>;

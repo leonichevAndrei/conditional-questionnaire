@@ -10,7 +10,8 @@ export type AnswerComponentProps = {
         answerGetById: number[],
         question: QuestionType,
         answers: AnswersType | undefined,
-        setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>
+        setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>,
+        other?: boolean | undefined
     }
 }
 export type AnswerComponentTextProps = {
@@ -21,7 +22,7 @@ export type AnswerComponentTextProps = {
 }
 export type AnswerComponentSelectProps = {
     propsCombine: {
-        other: boolean,
+        other: boolean | undefined,
         question: QuestionType,
         updateHandler: (e: React.FormEvent<HTMLInputElement>) => void
     }

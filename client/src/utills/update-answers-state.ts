@@ -1,7 +1,7 @@
-import { AnswersAnswerType, AnswersType, QuestionType } from "../types/common";
+import { AnswersType, EventType, QuestionType } from "../types/common";
 
 export default function updateAnswersState(
-    e: React.FormEvent<HTMLInputElement>,
+    e: EventType,
     answerGetById: number[],
     question: QuestionType,
     answers: AnswersType | undefined,

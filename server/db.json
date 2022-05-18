@@ -29,7 +29,7 @@
                         "answer": "TypeScript"
                     },
                     "required": false,
-                    "question": "Why do you like TypeScript",
+                    "question": "Why do you like TypeScript?",
                     "answer": ""
                 },
                 {
