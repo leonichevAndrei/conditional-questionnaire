@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SPECIAL_VAL } from "../../../settings/app-settings";
-import { AnswerSelectList, AnswerSelectItem, RadioItem, RadioButton, RadioButtonLabel, AnswerSelectLabel, AnswerSelectInput, AnswerSelectText, AnswerTextInputPlus } from "../../../styled-components/questionaires/common";
+import { AnswerSelectList, AnswerSelectItem, RadioItem, RadioButton, RadioButtonLabel, AnswerSelectLabel, AnswerSelectInput, AnswerSelectText, AnswerTextInputPlus } from "../../../styled-components/common";
 import { EventType } from "../../../types/common";
 import { AnswerComponentSelectProps } from "../../../types/props";
 

@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { ERROR_MESS } from "../../settings/app-settings";
-import { QuestionWrap, QuestionText, QuestionAnswer, QuestionError, RedElm, ExclamSign } from "../../styled-components/questionaires/common";
+import { QuestionWrap, QuestionText, QuestionAnswer, QuestionError, RedElm, ExclamSign } from "../../styled-components/common";
 import { QuestionProps } from "../../types/props"
 import AnswerSelect from "../answers/answer-select";
 import AnswerText from "../answers/answer-text";
@@ -73,7 +73,7 @@ export default function Question(props: QuestionProps) {
                     {buildAnswer(question.type.select, question.type.text)}
                 </QuestionAnswer>
                     {error && question.required &&
-                        <QuestionError><ExclamSign size={18} />{ERROR_MESS}</QuestionError>}
+                        <QuestionError><ExclamSign />{ERROR_MESS}</QuestionError>}
             </QuestionWrap>
         </Fragment>
     )

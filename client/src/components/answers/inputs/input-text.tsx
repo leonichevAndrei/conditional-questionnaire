@@ -1,4 +1,4 @@
-import { AnswerTextInput } from "../../../styled-components/questionaires/common";
+import { AnswerTextInput } from "../../../styled-components/common";
 import { AnswerComponentTextProps } from "../../../types/props";
 
 export default function InputTextComponent(props: AnswerComponentTextProps) {

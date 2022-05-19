@@ -1,6 +1,6 @@
 import { ExclamationCircleFill } from "react-bootstrap-icons";
 import styled, { createGlobalStyle } from "styled-components";
-import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR, MAX_INPUT_WIDTH, WARNING_COL } from "../../settings/theme";
+import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR, MAX_INPUT_WIDTH, WARNING_COL, BORDER_RADIUS } from "../settings/theme";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -19,10 +19,17 @@ export const GlobalStyle = createGlobalStyle`
       }
 `;
 
+export const QuestWrap = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+`;
+
 export const QuestBody = styled.div`
     display: flex;
     flex-direction: column;
-    padding-bottom: ${MARGIN_MID};
     width: calc(100vw - (2 * ${MARGIN_MID}));
     @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
         width: ${WIDTH_ON_BIG_SCREENS};
@@ -32,9 +39,8 @@ export const QuestBody = styled.div`
 
 const SomeWrap = styled.div`
     background-color: white;
-    border-radius: 10px;
+    border-radius: ${BORDER_RADIUS};
     border: 1px solid ${COL_PRIMARY};
-    overflow: hidden;
 `;
 
 export const QuestHeaderWrap = styled(SomeWrap)`
@@ -45,6 +51,8 @@ export const QuestHeaderWrap = styled(SomeWrap)`
 export const QuestHeaderBlueLine = styled.div`
     width: 100%;
     height: 12px;
+    border-top-left-radius: calc(${BORDER_RADIUS} - 1px);
+    border-top-right-radius: calc(${BORDER_RADIUS} - 1px);
     background: linear-gradient(90deg, ${COL_PRIMARY_DARK}, ${COL_PRIMARY});
 `;
 
@@ -69,24 +77,26 @@ export const QuestionsWrap = styled.div`
 export const QuestSubmit = styled.div`
     display: flex;
     justify-content: right;
-    padding-top: ${MARGIN_MID};
+    padding: ${MARGIN_MID} 0;
 `;
 
-export const QuestSubmitButton = styled.button`
+export const SubmitButton = styled.button`
     color: white;
     background-color: ${COL_PRIMARY};
     border: none;
     padding: 12px 40px;
-    border-radius: 10px;
+    border-radius: ${BORDER_RADIUS};
     font-size: 0.9em;
     cursor: pointer;
-    ${BOX_SHADOW_ELMS};
-    border: 1px solid ${COL_PRIMARY_DARK};
     box-shadow: none;
     &:hover {
         box-shadow: ${COL_PRIMARY_DARK} 0px 30px 20px -10px inset;
     }
-    transition: box-shadow 1s;
+    transition: box-shadow 1s; 
+`;
+
+export const QuestSubmitButton = styled.button`
+    ${BOX_SHADOW_ELMS};
 `;
 
 type QuestionWrapProps = {
@@ -98,9 +108,9 @@ export const QuestionWrap = styled(SomeWrap)`
     margin-top: ${MARGIN_MID};
     padding: ${MARGIN_MAX} ${MARGIN_MAX};
     ${BOX_SHADOW_ELMS};
-    ${(props: QuestionWrapProps) => props.show 
-    ? "display: block;" 
-    : "display: none;"};
+    ${(props: QuestionWrapProps) => props.show
+        ? "display: block;"
+        : "display: none;"};
     animation: ${(props: QuestionWrapProps) => props.animate ? "showQuestion 1s ease forwards" : ""};
     @keyframes showQuestion {
         0% {transform: translateX(-100%);}
@@ -118,7 +128,7 @@ export const QuestionBetween = styled.div`
 export const QuestionAnswer = styled.div`
 `;
 
-export const AnswerTextInput = styled.input`
+export const TextInput = styled.input`
     width: 100%;
     height: 32px;
     border: none;
@@ -132,6 +142,9 @@ export const AnswerTextInput = styled.input`
         color: ${SECONDARY_COLOR};
     }
     transition: border 1s, width 2s;
+`;
+
+export const AnswerTextInput = styled(TextInput)`
     margin-top: ${MARGIN_MID};
     @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
         max-width: ${MAX_INPUT_WIDTH};
@@ -239,10 +252,9 @@ export const RedElm = styled.span`
     color: ${WARNING_COL};
 `;
 
-export const QuestionError = styled.div`
+export const CommonError = styled.div`
     font-size: 0.8em;
     color: ${WARNING_COL};
-    padding-top: ${MARGIN_MID};
     position: relative;
     animation: showError 1s ease forwards;
     @keyframes showError {
@@ -251,10 +263,16 @@ export const QuestionError = styled.div`
     }
 `;
 
-export const ExclamSign = styled(ExclamationCircleFill)`
+export const QuestionError = styled(CommonError)`
+    padding-top: ${MARGIN_MID};
+`;
+
+export const ExclamSign = styled(ExclamationCircleFill).attrs(() => ({
+    size: 18
+}))`
     color: ${WARNING_COL};
     position: relative;
-    top: 2px;
+    top: 3px;
     left: 5px;
     margin-right: calc(${MARGIN_MIN} + 5px);
 `;

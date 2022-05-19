@@ -1,5 +1,5 @@
 import { APP_ADD_INFO, APP_TITLE } from "../../settings/app-settings";
-import { QuestHeaderWrap, QuestHeaderBlueLine, QuestHeaderTitle, QuestHeaderInfo, QuestHeaderAdditional } from "../../styled-components/questionaires/common";
+import { QuestHeaderWrap, QuestHeaderBlueLine, QuestHeaderTitle, QuestHeaderInfo, QuestHeaderAdditional } from "../../styled-components/common";
 
 export default function QuestHeader() {
     return (

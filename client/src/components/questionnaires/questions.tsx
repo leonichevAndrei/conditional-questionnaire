@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { SPECIAL_VAL } from "../../settings/app-settings";
-import { QuestSubmit, QuestSubmitButton, QuestionsWrap } from "../../styled-components/questionaires/common";
+import { QuestSubmit, QuestSubmitButton, QuestionsWrap } from "../../styled-components/common";
 import { AnswersType, QuestionnaireType } from "../../types/common";
 import generateAnswers from "../../utills/generate-answers";
+import PopupStart from "../popup/popup-start";
 import Question from "./question";
 
 export default function Questions() {
@@ -46,6 +47,7 @@ export default function Questions() {
             <QuestSubmit>
                 <QuestSubmitButton onClick={() => handleSubmit()}>Submit</QuestSubmitButton>
             </QuestSubmit>
+            <PopupStart />
         </QuestionsWrap>
     )
 }
