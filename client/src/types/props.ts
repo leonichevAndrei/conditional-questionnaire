@@ -17,20 +17,6 @@ export type AnswerComponentProps = {
         name?: string
     }
 }
-export type AnswerComponentTextProps = {
-    propsCombine: {
-        value: string,
-        handleUpdate: (e: React.FormEvent<HTMLInputElement>) => void
-    }
-}
-export type AnswerComponentSelectProps = {
-    propsCombine: {
-        name: string | undefined,
-        other: boolean | undefined,
-        question: QuestionType,
-        handleUpdate: (e: React.FormEvent<HTMLInputElement>) => void
-    }
-}
 export type PopupStartProps = {
     name: string,
     setName: React.Dispatch<React.SetStateAction<string>>,

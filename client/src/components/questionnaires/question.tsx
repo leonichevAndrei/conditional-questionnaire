@@ -2,8 +2,8 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { ERROR_MESS } from "../../settings/app-settings";
 import { QuestionWrap, QuestionText, QuestionAnswer, QuestionError, RedElm, ExclamSign } from "../../styled-components/common";
 import { QuestionProps } from "../../types/props"
-import AnswerSelect from "../answers/answer-select";
-import AnswerText from "../answers/answer-text";
+import AnswerSelect from "./answers/answer-select";
+import AnswerText from "./answers/answer-text";
 
 export default function Question(props: QuestionProps) {
 
