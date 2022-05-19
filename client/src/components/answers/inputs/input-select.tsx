@@ -45,7 +45,7 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
                         <AnswerSelectInput>
                             <AnswerTextInputPlus
                                 value={inputValue !== SPECIAL_VAL ? inputValue : ""}
-                                activated={false}
+                                activated={inputValue === select}
                                 onFocus={(e) => handleOnInput(e)}
                                 onBlur={() => handleOnBlur()}
                                 onInput={(e) => handleOnInput(e)}
