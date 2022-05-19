@@ -88,10 +88,24 @@ export const QuestSubmitButton = styled.button`
     transition: box-shadow 1s;
 `;
 
+type QuestionWrapProps = {
+    show: boolean,
+    animate: boolean
+}
+
 export const QuestionWrap = styled(SomeWrap)`
     margin-top: ${MARGIN_MID};
     padding: ${MARGIN_MAX} ${MARGIN_MAX};
     ${BOX_SHADOW_ELMS};
+    ${(props: QuestionWrapProps) => props.show 
+    ? "display: block;" 
+    : "display: none;"};
+    transform: ${(props: QuestionWrapProps) => props.animate ? "translateX(-150%)" : ""};
+    animation: ${(props: QuestionWrapProps) => props.animate ? "show 1s forwards" : ""};
+    @keyframes show {
+        0% {transform: translateX(-100%);}
+        100% {transform: translateY(0);}
+    }
 `;
 
 export const QuestionText = styled.div`
@@ -204,7 +218,7 @@ export const RadioButton = styled.input`
   }
   
   ${(props) =>
-    props.checked && ` 
+        props.checked && ` 
     &:checked + ${RadioButtonLabel} {
       background: white;
       border: 2px solid black;

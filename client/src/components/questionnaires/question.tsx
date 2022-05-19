@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { QuestionWrap, QuestionText, QuestionAnswer } from "../../styled-components/questionaires/common";
 import { QuestionProps } from "../../types/props"
 import AnswerSelect from "../answers/answer-select";
@@ -30,9 +30,9 @@ export default function Question(props: QuestionProps) {
             if (select === false && text === true) {
                 return <AnswerText propsCombine={propsCombine} />;
             } else if (select === true && text === false) {
-                return <AnswerSelect propsCombine={{...propsCombine, other: false}} />;
+                return <AnswerSelect propsCombine={{ ...propsCombine, other: false }} />;
             } else if (select === true && text === true) {
-                return <AnswerSelect propsCombine={{...propsCombine, other: true}} />;
+                return <AnswerSelect propsCombine={{ ...propsCombine, other: true }} />;
             } else {
                 return "Unsupported type detected";
             }
@@ -41,12 +41,35 @@ export default function Question(props: QuestionProps) {
         }
     }
 
+    const checkConditional = useMemo(() => {
+        const cond = question.conditional;
+        if (typeof cond === "object" && answers !== undefined && answerGetById.length > 0) {
+            const id = cond.questionId;
+            const checkAnswer = cond.answer;
+            if (answers!.list[answerGetById[id]].answer !== checkAnswer) {
+                answers!.list[answerGetById[question.id]].answer = "";
+                return false;
+            }
+        }
+        return true;
+    }, [question, answers, answerGetById]);
+
+    const isConditional = useMemo(() => {
+        const cond = question.conditional;
+        if (typeof cond === "object") {
+            return true;
+        }
+        return false;
+    }, [question]);
+
     return (
-        <QuestionWrap>
-            <QuestionText>{question.question}</QuestionText>
-            <QuestionAnswer>
-                {buildAnswer(question.type.select, question.type.text)}
-            </QuestionAnswer>
-        </QuestionWrap>
+        <Fragment>
+            <QuestionWrap show={checkConditional} animate={isConditional}>
+                <QuestionText>{question.question}</QuestionText>
+                <QuestionAnswer>
+                    {buildAnswer(question.type.select, question.type.text)}
+                </QuestionAnswer>
+            </QuestionWrap>
+        </Fragment>
     )
 }
