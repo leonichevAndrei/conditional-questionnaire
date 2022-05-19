@@ -3,7 +3,8 @@ import { QuestionType, AnswersType } from "./common"
 export type QuestionProps = {
     question: QuestionType,
     answers: AnswersType | undefined,
-    setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>
+    setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>,
+    error: boolean
 }
 export type AnswerComponentProps = {
     propsCombine: {
@@ -17,13 +18,13 @@ export type AnswerComponentProps = {
 export type AnswerComponentTextProps = {
     propsCombine: {
         value: string,
-        updateHandler: (e: React.FormEvent<HTMLInputElement>) => void
+        handleUpdate: (e: React.FormEvent<HTMLInputElement>) => void
     }
 }
 export type AnswerComponentSelectProps = {
     propsCombine: {
         other: boolean | undefined,
         question: QuestionType,
-        updateHandler: (e: React.FormEvent<HTMLInputElement>) => void
+        handleUpdate: (e: React.FormEvent<HTMLInputElement>) => void
     }
 }

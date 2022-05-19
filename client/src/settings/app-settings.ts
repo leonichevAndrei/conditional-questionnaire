@@ -1,5 +1,6 @@
-const appTitle = "GoTech Questionnaire";
-const appAddInfo = "Show me what you got!";
-const specialVal = "||-*-||";
+const APP_TITLE = "GoTech Questionnaire";
+const APP_ADD_INFO = "Show me what you got!";
+const SPECIAL_VAL = "||-*-||";
+const ERROR_MESS = "Neccesary to fill up this required field";
 
-export { appTitle, appAddInfo, specialVal }
+export { APP_TITLE, APP_ADD_INFO, SPECIAL_VAL, ERROR_MESS }

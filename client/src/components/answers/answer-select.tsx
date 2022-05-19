@@ -10,7 +10,7 @@ export default function AnswerSelect(props: AnswerComponentProps) {
     const propsCombine = {
         other: other,
         question: question,
-        updateHandler: (e: EventType) => {
+        handleUpdate: (e: EventType) => {
             updateAnswersState(e, answerGetById, question, answers, setAnswers);
         }
     };

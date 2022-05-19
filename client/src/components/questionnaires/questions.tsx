@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { SPECIAL_VAL } from "../../settings/app-settings";
 import { QuestSubmit, QuestSubmitButton, QuestionsWrap } from "../../styled-components/questionaires/common";
 import { AnswersType, QuestionnaireType } from "../../types/common";
 import generateAnswers from "../../utills/generate-answers";
@@ -10,8 +11,7 @@ export default function Questions() {
     const { questionnaireId } = useParams();
     const [questionnaire, setQuestionnaire] = useState<QuestionnaireType | undefined>(undefined);
     const [answers, setAnswers] = useState<AnswersType | undefined>(undefined);
-
-    console.log(answers);
+    const [errors, setErrors] = useState(new Array());
 
     useEffect(() => {
         fetch(`http://localhost:3001/questionnaires/${questionnaireId}`)
@@ -21,6 +21,14 @@ export default function Questions() {
                 setQuestionnaire(result)
             });
     }, [questionnaireId]);
+
+    function handleSubmit() {
+        const errorsArray = new Array();
+        for (let i = 0; i < answers!.list.length; i++) {
+            errorsArray[i] = (answers!.list[i].answer === "") || (answers!.list[i].answer === SPECIAL_VAL);
+        }
+        setErrors(errorsArray);
+    }
 
     return (
         <QuestionsWrap>
@@ -32,10 +40,11 @@ export default function Questions() {
                             question={question}
                             answers={answers}
                             setAnswers={setAnswers}
+                            error={errors[ind]}
                         />);
                 })}
             <QuestSubmit>
-                <QuestSubmitButton>Submit</QuestSubmitButton>
+                <QuestSubmitButton onClick={() => handleSubmit()}>Submit</QuestSubmitButton>
             </QuestSubmit>
         </QuestionsWrap>
     )

@@ -1,12 +1,13 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { QuestionWrap, QuestionText, QuestionAnswer } from "../../styled-components/questionaires/common";
+import { ERROR_MESS } from "../../settings/app-settings";
+import { QuestionWrap, QuestionText, QuestionAnswer, QuestionError, RedElm, ExclamSign } from "../../styled-components/questionaires/common";
 import { QuestionProps } from "../../types/props"
 import AnswerSelect from "../answers/answer-select";
 import AnswerText from "../answers/answer-text";
 
 export default function Question(props: QuestionProps) {
 
-    const { question, answers, setAnswers } = props;
+    const { question, answers, setAnswers, error } = props;
     const [answerGetById, setAnswerGetById] = useState<number[]>(new Array());
 
     useEffect(() => {
@@ -65,10 +66,14 @@ export default function Question(props: QuestionProps) {
     return (
         <Fragment>
             <QuestionWrap show={checkConditional} animate={isConditional}>
-                <QuestionText>{question.question}</QuestionText>
+                <QuestionText>
+                    {question.question}{question.required && <RedElm> *</RedElm>}
+                </QuestionText>
                 <QuestionAnswer>
                     {buildAnswer(question.type.select, question.type.text)}
                 </QuestionAnswer>
+                    {error && question.required &&
+                        <QuestionError><ExclamSign size={18} />{ERROR_MESS}</QuestionError>}
             </QuestionWrap>
         </Fragment>
     )

@@ -3,12 +3,12 @@ import { AnswerComponentTextProps } from "../../../types/props";
 
 export default function InputTextComponent(props: AnswerComponentTextProps) {
 
-    const { value, updateHandler } = props.propsCombine;
+    const { value, handleUpdate } = props.propsCombine;
 
     return (
         <AnswerTextInput
             value={value}
-            onInput={(e) => updateHandler(e)}
+            onInput={(e) => handleUpdate(e)}
             placeholder="Your answer"
         />
     );

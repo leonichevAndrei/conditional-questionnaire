@@ -1,5 +1,6 @@
+import { ExclamationCircleFill } from "react-bootstrap-icons";
 import styled, { createGlobalStyle } from "styled-components";
-import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR, MAX_INPUT_WIDTH } from "../../settings/theme";
+import { FONT_SIZE, FONT_FAMILY, COL_BG, MARGIN_MID, MEDIA_BREAK_POINT, WIDTH_ON_BIG_SCREENS, MAX_WIDTH_ON_BIG_SCREENS, COL_PRIMARY, BOX_SHADOW_ELMS, COL_PRIMARY_DARK, MARGIN_MAX, MARGIN_MIN, SECONDARY_COLOR, MAX_INPUT_WIDTH, WARNING_COL } from "../../settings/theme";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -59,7 +60,7 @@ export const QuestHeaderInfo = styled.div`
 export const QuestHeaderAdditional = styled.div`
     font-size: 0.9em;
     padding: 0 ${MARGIN_MAX} ${MARGIN_MID};
-    color: red;
+    color: ${WARNING_COL};
 `;
 
 export const QuestionsWrap = styled.div`
@@ -100,9 +101,8 @@ export const QuestionWrap = styled(SomeWrap)`
     ${(props: QuestionWrapProps) => props.show 
     ? "display: block;" 
     : "display: none;"};
-    transform: ${(props: QuestionWrapProps) => props.animate ? "translateX(-150%)" : ""};
-    animation: ${(props: QuestionWrapProps) => props.animate ? "show 1s forwards" : ""};
-    @keyframes show {
+    animation: ${(props: QuestionWrapProps) => props.animate ? "showQuestion 1s ease forwards" : ""};
+    @keyframes showQuestion {
         0% {transform: translateX(-100%);}
         100% {transform: translateY(0);}
     }
@@ -233,4 +233,28 @@ export const RadioButton = styled.input`
       }
     }
   `}
+`;
+
+export const RedElm = styled.span`
+    color: ${WARNING_COL};
+`;
+
+export const QuestionError = styled.div`
+    font-size: 0.8em;
+    color: ${WARNING_COL};
+    padding-top: ${MARGIN_MID};
+    position: relative;
+    animation: showError 1s ease forwards;
+    @keyframes showError {
+        0% {left: 20vw; opacity: 0%;}
+        100% {left: 0vw; opacity: 100%;}
+    }
+`;
+
+export const ExclamSign = styled(ExclamationCircleFill)`
+    color: ${WARNING_COL};
+    position: relative;
+    top: 2px;
+    left: 5px;
+    margin-right: calc(${MARGIN_MIN} + 5px);
 `;

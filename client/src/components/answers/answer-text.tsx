@@ -9,7 +9,7 @@ export default function AnswerText(props: AnswerComponentProps) {
     
     const propsCombine = {
         value: answers!.list[answerGetById[question.id]].answer,
-        updateHandler: (e: EventType) => {
+        handleUpdate: (e: EventType) => {
             updateAnswersState(e, answerGetById, question, answers, setAnswers)
         }
     }
