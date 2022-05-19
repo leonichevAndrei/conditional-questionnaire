@@ -1,4 +1,4 @@
-import { QuestionType, AnswersType, AnswersListType } from "./common"
+import { QuestionType, AnswersListType } from "./common"
 
 export type QuestionProps = {
     question: QuestionType,
