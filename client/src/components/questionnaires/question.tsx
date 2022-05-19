@@ -7,7 +7,7 @@ import AnswerText from "../answers/answer-text";
 
 export default function Question(props: QuestionProps) {
 
-    const { question, answers, setAnswers, error } = props;
+    const { question, answers, setAnswers, error, name } = props;
     const [answerGetById, setAnswerGetById] = useState<number[]>(new Array());
 
     useEffect(() => {
@@ -31,9 +31,9 @@ export default function Question(props: QuestionProps) {
             if (select === false && text === true) {
                 return <AnswerText propsCombine={propsCombine} />;
             } else if (select === true && text === false) {
-                return <AnswerSelect propsCombine={{ ...propsCombine, other: false }} />;
+                return <AnswerSelect propsCombine={{ ...propsCombine, other: false, name: name }} />;
             } else if (select === true && text === true) {
-                return <AnswerSelect propsCombine={{ ...propsCombine, other: true }} />;
+                return <AnswerSelect propsCombine={{ ...propsCombine, other: true, name: name }} />;
             } else {
                 return "Unsupported type detected";
             }

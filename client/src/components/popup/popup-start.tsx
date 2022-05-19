@@ -7,7 +7,7 @@ import PopupCommon from "./popup-builder";
 
 export default function PopupStart(props: PopupStartProps) {
 
-    const { name, setName, popupVisible, setPopupVisible, handleStart } = props;
+    const { name, setName, popupStartVisible, setPopupStartVisible, handleStart } = props;
 
     const [error, setError] = useState(false);
 
@@ -17,13 +17,13 @@ export default function PopupStart(props: PopupStartProps) {
         } else {
             handleStart();
             error === true && setError(false);
-            setPopupVisible(false);
+            setPopupStartVisible(false);
         }
     }
 
     return (
         <Fragment>
-            {popupVisible &&
+            {popupStartVisible &&
                 <PopupCommon show={true}>
                     <PopupStartWrap>
                         <PopupStartTitle>Please, enter your name:<RedElm> *</RedElm></PopupStartTitle>

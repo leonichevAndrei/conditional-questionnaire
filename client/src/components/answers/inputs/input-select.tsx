@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SPECIAL_VAL } from "../../../settings/app-settings";
 import { AnswerSelectList, AnswerSelectItem, RadioItem, RadioButton, RadioButtonLabel, AnswerSelectLabel, AnswerSelectInput, AnswerSelectText, AnswerTextInputPlus } from "../../../styled-components/common";
 import { EventType } from "../../../types/common";
@@ -6,10 +6,15 @@ import { AnswerComponentSelectProps } from "../../../types/props";
 
 export default function InputSelectComponent(props: AnswerComponentSelectProps) {
 
-    const { other, question, handleUpdate } = props.propsCombine;
+    const { name, other, question, handleUpdate } = props.propsCombine;
 
     const [select, setSelect] = useState("");
     const [inputValue, setInputValue] = useState(SPECIAL_VAL);
+
+    useEffect(() => {
+        setInputValue(SPECIAL_VAL);
+        setSelect("");
+    }, [name]);
 
     function handleSelectChange(e: EventType) {
         setSelect(e.currentTarget.value);

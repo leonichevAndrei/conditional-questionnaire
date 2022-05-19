@@ -4,6 +4,7 @@ import { SPECIAL_VAL } from "../../settings/app-settings";
 import { QuestSubmit, QuestSubmitButton, QuestionsWrap, SubmitButton } from "../../styled-components/common";
 import { AnswersType, QuestionnaireType } from "../../types/common";
 import generateAnswers from "../../utills/generate-answers";
+import PopupFinish from "../popup/popup-finish";
 import PopupStart from "../popup/popup-start";
 import Question from "./question";
 
@@ -14,7 +15,8 @@ export default function Questions() {
     const [answers, setAnswers] = useState<AnswersType | undefined>(undefined);
     const [errors, setErrors] = useState(new Array());
     const [name, setName] = useState("");
-    const [popupVisible, setPopupVisible] = useState(true);
+    const [popupStartVisible, setPopupStartVisible] = useState(true);
+    const [popupFinishVisible, setPopupFinishVisible] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3001/questionnaires/${questionnaireId}`)
@@ -28,13 +30,28 @@ export default function Questions() {
     function handleSubmit() {
         const errorsArray = new Array();
         for (let i = 0; i < answers!.list.length; i++) {
-            errorsArray[i] = (answers!.list[i].answer === "") || (answers!.list[i].answer === SPECIAL_VAL);
+            errorsArray[i] = (
+                (answers!.list[i].answer === "") ||
+                (answers!.list[i].answer === SPECIAL_VAL)
+            ) && questionnaire!.questions[i].required === true;
         }
-        setErrors(errorsArray);
+        JSON.stringify(errorsArray) !== JSON.stringify(errors)
+            && setErrors(errorsArray);
+        if (errorsArray.indexOf(true) === -1) {
+            setPopupFinishVisible(true);
+            setAnswers(generateAnswers(questionnaire!));
+            setErrors(new Array());
+            setName("");
+        }
     }
 
     function handleStart() {
+        popupFinishVisible && setPopupFinishVisible(false);
+    }
 
+    function handleFinish() {
+        setPopupFinishVisible(false);
+        setPopupStartVisible(true);
     }
 
     return (
@@ -48,6 +65,7 @@ export default function Questions() {
                             answers={answers}
                             setAnswers={setAnswers}
                             error={errors[ind]}
+                            name={name}
                         />);
                 })}
             <QuestSubmit>
@@ -58,9 +76,13 @@ export default function Questions() {
             <PopupStart
                 name={name}
                 setName={setName}
-                popupVisible={popupVisible}
-                setPopupVisible={setPopupVisible}
+                popupStartVisible={popupStartVisible}
+                setPopupStartVisible={setPopupStartVisible}
                 handleStart={handleStart}
+            />
+            <PopupFinish
+                popupFinishVisible={popupFinishVisible}
+                handleFinish={handleFinish}
             />
         </QuestionsWrap>
     )
