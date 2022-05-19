@@ -146,7 +146,7 @@ export const AnswerTextInputPlus = styled(AnswerTextInput)`
     color: ${(props: AnswerTextInputPlusProps) => {
         return props.activated ? "black" : SECONDARY_COLOR;
     }};
-        @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
+    @media screen and (min-width: ${MEDIA_BREAK_POINT}) {
         max-width: calc(${MAX_INPUT_WIDTH} - 103px);
     }
     margin-top: 0;

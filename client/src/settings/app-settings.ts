@@ -1,3 +1,5 @@
-export const AppTitle = "GoTech Questionnaire";
-export const AppAddInfo = "Show me what you got!";
-export const specialVal = "||-*-||";
+const appTitle = "GoTech Questionnaire";
+const appAddInfo = "Show me what you got!";
+const specialVal = "||-*-||";
+
+export { appTitle, appAddInfo, specialVal }

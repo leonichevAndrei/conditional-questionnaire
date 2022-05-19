@@ -19,7 +19,7 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
         setInputValue(e.currentTarget.value);
         handleSelectChange(e);
     }
-    function blurHandler(e: EventType) {
+    function blurHandler() {
         if (inputValue === "") {
             setInputValue("");
         }
@@ -35,7 +35,7 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
                         name={`radioGroup${question.id}`}
                         value={value}
                         checked={select === value}
-                        onChange={(event) => handleSelectChange(event)}
+                        onChange={(e) => handleSelectChange(e)}
                     />
                     <RadioButtonLabel />
                 </RadioItem>
@@ -47,7 +47,7 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
                                 value={inputValue !== specialVal ? inputValue : ""}
                                 activated={false}
                                 onFocus={(e) => inputValueHandler(e)}
-                                onBlur={(e) => blurHandler(e)}
+                                onBlur={() => blurHandler()}
                                 onInput={(e) => inputValueHandler(e)}
                             />
                         </AnswerSelectInput>
@@ -63,8 +63,7 @@ export default function InputSelectComponent(props: AnswerComponentSelectProps) 
                 question.answer.map((answer, ind) => {
                     return getSelectItem(answer, ind, false);
                 })}
-            {other &&
-                getSelectItem("Other", question.answer.length, other)}
+            {other && getSelectItem("Other", question.answer.length, other)}
         </AnswerSelectList>
     );
 }

@@ -1,9 +1,9 @@
 export type QuestionnaireType = {
     id: number,
-    questions: QuestionType[],
+    questions: QuestionType[]
 }
 export type QuestionType = {
-    id: number;
+    id: number,
     type: QuestionTypeType,
     conditional: QuestionConditionalType,
     required: boolean,
@@ -22,7 +22,7 @@ export type AnswersType = {
     id: number,
     name: string,
     questionnaire: number,
-    list: AnswersAnswerType[];
+    list: AnswersAnswerType[]
 }
 export type AnswersAnswerType = {
     questionId: number,
