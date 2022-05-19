@@ -28,7 +28,13 @@ export default function PopupStart(props: PopupStartProps) {
                     <PopupStartWrap>
                         <PopupStartTitle>Please, enter your name:<RedElm> *</RedElm></PopupStartTitle>
                         <PopupStartInput>
-                            <TextInput value={name} onInput={(e) => setName(e.currentTarget.value)} placeholder="Type here..." />
+                            <TextInput
+                                placeholder="Type here..."
+                                autoFocus={true}
+                                value={name}
+                                onInput={(e) => setName(e.currentTarget.value)}
+                                onKeyDown={(e) => (e.key === "Enter") && handleSubmit()}
+                            />
                         </PopupStartInput>
                         {error &&
                             <CommonError><ExclamSign />{ERROR_MESS}</CommonError>}

@@ -253,6 +253,10 @@ export const RedElm = styled.span`
     color: ${WARNING_COL};
 `;
 
+export const BoldElm = styled.span`
+    font-weight: bold;
+`;
+
 export const CommonError = styled.div`
     font-size: 0.8em;
     color: ${WARNING_COL};

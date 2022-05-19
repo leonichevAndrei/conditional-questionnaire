@@ -18,11 +18,11 @@ export type QuestionConditionalType = boolean | {
     questionId: number,
     answer: string
 }
+export type AnswersListType = AnswersAnswerType[];
 export type AnswersType = {
-    id: number,
     name: string,
     questionnaire: number,
-    list: AnswersAnswerType[]
+    list: AnswersListType
 }
 export type AnswersAnswerType = {
     questionId: number,

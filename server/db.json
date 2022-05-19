@@ -1,89 +1,135 @@
 {
-    "questionnaires": [
+  "questionnaires": [
+    {
+      "id": 1,
+      "questions": [
         {
-            "id": 1,
-            "questions": [
-                {
-                    "id": 1,
-                    "type": {
-                        "select": true,
-                        "text": false
-                    },
-                    "conditional": false,
-                    "required": true,
-                    "question": "What language is your favorite?",
-                    "answer": [
-                        "Javascript",
-                        "TypeScript",
-                        "CoffeeScript"
-                    ]
-                },
-                {
-                    "id": 2,
-                    "type": {
-                        "select": false,
-                        "text": true
-                    },
-                    "conditional": {
-                        "questionId": 1,
-                        "answer": "TypeScript"
-                    },
-                    "required": false,
-                    "question": "Why do you like TypeScript?",
-                    "answer": ""
-                },
-                {
-                    "id": 3,
-                    "type": {
-                        "select": false,
-                        "text": true
-                    },
-                    "conditional": false,
-                    "required": false,
-                    "question": "What do you like about programing?",
-                    "answer": ""
-                },
-                {
-                    "id": 4,
-                    "type": {
-                        "select": true,
-                        "text": true
-                    },
-                    "conditional": false,
-                    "required": true,
-                    "question": "How was the assignment?",
-                    "answer": [
-                        "Easy",
-                        "Normal",
-                        "Hard"
-                    ]
-                }
-            ]
-        }
-    ],
-    "answers": [
+          "id": 1,
+          "type": {
+            "select": true,
+            "text": false
+          },
+          "conditional": false,
+          "required": true,
+          "question": "What language is your favorite?",
+          "answer": [
+            "Javascript",
+            "TypeScript",
+            "CoffeeScript"
+          ]
+        },
         {
-            "id": 1,
-            "name": "Lex Luther",
-            "questionnaire": 1,
-            "list": [
-                {
-                    "questionId": 1,
-                    "answer": "TypeScript"
-                },
-                {
-                    "questionId": 2,
-                    "answer": "I like strong typisation"
-                },
-                {
-                    "questionId": 3,
-                    "answer": "Building things from scratch"
-                },
-                {
-                    "questionId": 4,
-                    "answer": "Incredible"
-                }
-            ]
+          "id": 2,
+          "type": {
+            "select": false,
+            "text": true
+          },
+          "conditional": {
+            "questionId": 1,
+            "answer": "TypeScript"
+          },
+          "required": false,
+          "question": "Why do you like TypeScript?",
+          "answer": ""
+        },
+        {
+          "id": 3,
+          "type": {
+            "select": false,
+            "text": true
+          },
+          "conditional": false,
+          "required": false,
+          "question": "What do you like about programing?",
+          "answer": ""
+        },
+        {
+          "id": 4,
+          "type": {
+            "select": true,
+            "text": true
+          },
+          "conditional": false,
+          "required": true,
+          "question": "How was the assignment?",
+          "answer": [
+            "Easy",
+            "Normal",
+            "Hard"
+          ]
         }
-    ]
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "name": "Andrey",
+      "questionnaire": 1,
+      "answers": [
+        {
+          "questionId": 1,
+          "answer": "TypeScript"
+        },
+        {
+          "questionId": 2,
+          "answer": "Because I can using strong typisation"
+        },
+        {
+          "questionId": 3,
+          "answer": "Create product from scratch"
+        },
+        {
+          "questionId": 4,
+          "answer": "Very interesting =)"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Sam",
+      "questionnaire": 1,
+      "answers": [
+        {
+          "questionId": 1,
+          "answer": "CoffeeScript"
+        },
+        {
+          "questionId": 2,
+          "answer": ""
+        },
+        {
+          "questionId": 3,
+          "answer": "Sitting in the chair all day long"
+        },
+        {
+          "questionId": 4,
+          "answer": "Easy"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "adasd",
+      "questionnaire": 1,
+      "answers": [
+        {
+          "questionId": 1,
+          "answer": "Javascript"
+        },
+        {
+          "questionId": 2,
+          "answer": ""
+        },
+        {
+          "questionId": 3,
+          "answer": "1"
+        },
+        {
+          "questionId": 4,
+          "answer": "Easy"
+        }
+      ],
+      "id": 3
+    }
+  ]
 }

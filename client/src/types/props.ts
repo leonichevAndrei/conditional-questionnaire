@@ -1,9 +1,9 @@
-import { QuestionType, AnswersType } from "./common"
+import { QuestionType, AnswersType, AnswersListType } from "./common"
 
 export type QuestionProps = {
     question: QuestionType,
-    answers: AnswersType | undefined,
-    setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>,
+    answersList: AnswersListType | undefined,
+    setAnswersList: React.Dispatch<React.SetStateAction<AnswersListType | undefined>>,
     error: boolean,
     name: string
 }
@@ -11,8 +11,8 @@ export type AnswerComponentProps = {
     propsCombine: {
         answerGetById: number[],
         question: QuestionType,
-        answers: AnswersType | undefined,
-        setAnswers: React.Dispatch<React.SetStateAction<AnswersType | undefined>>,
+        answersList: AnswersListType | undefined,
+        setAnswersList: React.Dispatch<React.SetStateAction<AnswersListType | undefined>>,
         other?: boolean | undefined,
         name?: string
     }

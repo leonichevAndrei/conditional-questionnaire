@@ -7,13 +7,13 @@ import AnswerText from "../answers/answer-text";
 
 export default function Question(props: QuestionProps) {
 
-    const { question, answers, setAnswers, error, name } = props;
+    const { question, answersList, setAnswersList, error, name } = props;
     const [answerGetById, setAnswerGetById] = useState<number[]>(new Array());
 
     useEffect(() => {
         const arr = new Array();
         let ind = 0;
-        for (let answer of answers!.list) {
+        for (let answer of answersList!) {
             arr[answer.questionId] = ind;
             ind++;
         }
@@ -24,8 +24,8 @@ export default function Question(props: QuestionProps) {
         const propsCombine = {
             answerGetById: answerGetById,
             question: question,
-            answers: answers,
-            setAnswers: setAnswers
+            answersList: answersList,
+            setAnswersList: setAnswersList
         }
         if (answerGetById.length > 0) {
             if (select === false && text === true) {
@@ -44,16 +44,16 @@ export default function Question(props: QuestionProps) {
 
     const checkConditional = useMemo(() => {
         const cond = question.conditional;
-        if (typeof cond === "object" && answers !== undefined && answerGetById.length > 0) {
+        if (typeof cond === "object" && answersList !== undefined && answerGetById.length > 0) {
             const id = cond.questionId;
             const checkAnswer = cond.answer;
-            if (answers!.list[answerGetById[id]].answer !== checkAnswer) {
-                answers!.list[answerGetById[question.id]].answer = "";
+            if (answersList[answerGetById[id]].answer !== checkAnswer) {
+                answersList[answerGetById[question.id]].answer = "";
                 return false;
             }
         }
         return true;
-    }, [question, answers, answerGetById]);
+    }, [question, answersList, answerGetById]);
 
     const isConditional = useMemo(() => {
         const cond = question.conditional;

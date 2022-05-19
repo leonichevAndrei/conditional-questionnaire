@@ -5,12 +5,12 @@ import InputTextComponent from "./inputs/input-text";
 
 export default function AnswerText(props: AnswerComponentProps) {
 
-    const { answerGetById, question, answers, setAnswers } = props.propsCombine;
+    const { answerGetById, question, answersList, setAnswersList } = props.propsCombine;
     
     const propsCombine = {
-        value: answers!.list[answerGetById[question.id]].answer,
+        value: answersList![answerGetById[question.id]].answer,
         handleUpdate: (e: EventType) => {
-            updateAnswersState(e, answerGetById, question, answers, setAnswers)
+            updateAnswersState(e, answerGetById, question, answersList, setAnswersList)
         }
     }
 

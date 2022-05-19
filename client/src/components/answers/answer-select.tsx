@@ -6,14 +6,14 @@ import InputSelectComponent from "./inputs/input-select";
 
 export default function AnswerSelect(props: AnswerComponentProps) {
 
-    const { answerGetById, question, answers, setAnswers, other, name } = props.propsCombine;
+    const { answerGetById, question, answersList, setAnswersList, other, name } = props.propsCombine;
 
     const propsCombine = {
         name: name,
         other: other,
         question: question,
         handleUpdate: (e: EventType) => {
-            updateAnswersState(e, answerGetById, question, answers, setAnswers);
+            updateAnswersState(e, answerGetById, question, answersList, setAnswersList);
         }
     };
 
