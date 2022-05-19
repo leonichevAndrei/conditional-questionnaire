@@ -72,7 +72,13 @@ export const Popup = styled.div`
     border-radius: ${BORDER_RADIUS};
     box-shadow: 0 15px 20px 0px black;
     border: 1px solid ${COL_PRIMARY_DARK};
-    ${BOX_SHADOW_ELMS};
+    ${BOX_SHADOW_ELMS};    
+    position: relative;
+    animation: showError 1s ease forwards;
+    @keyframes showError {
+        0% {left: 20vw; opacity: 0%;}
+        100% {left: 0vw; opacity: 100%;}
+    } 
 `;
 
 export const PopupStartWrap = styled.div`

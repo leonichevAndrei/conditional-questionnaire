@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { SPECIAL_VAL } from "../../settings/app-settings";
-import { QuestSubmit, QuestSubmitButton, QuestionsWrap } from "../../styled-components/common";
+import { QuestSubmit, QuestSubmitButton, QuestionsWrap, SubmitButton } from "../../styled-components/common";
 import { AnswersType, QuestionnaireType } from "../../types/common";
 import generateAnswers from "../../utills/generate-answers";
 import PopupStart from "../popup/popup-start";
@@ -13,6 +13,8 @@ export default function Questions() {
     const [questionnaire, setQuestionnaire] = useState<QuestionnaireType | undefined>(undefined);
     const [answers, setAnswers] = useState<AnswersType | undefined>(undefined);
     const [errors, setErrors] = useState(new Array());
+    const [name, setName] = useState("");
+    const [popupVisible, setPopupVisible] = useState(true);
 
     useEffect(() => {
         fetch(`http://localhost:3001/questionnaires/${questionnaireId}`)
@@ -31,6 +33,10 @@ export default function Questions() {
         setErrors(errorsArray);
     }
 
+    function handleStart() {
+
+    }
+
     return (
         <QuestionsWrap>
             {questionnaire !== undefined && answers !== undefined &&
@@ -45,9 +51,17 @@ export default function Questions() {
                         />);
                 })}
             <QuestSubmit>
-                <QuestSubmitButton onClick={() => handleSubmit()}>Submit</QuestSubmitButton>
+                <QuestSubmitButton>
+                    <SubmitButton onClick={() => handleSubmit()}>Submit</SubmitButton>
+                </QuestSubmitButton>
             </QuestSubmit>
-            <PopupStart />
+            <PopupStart
+                name={name}
+                setName={setName}
+                popupVisible={popupVisible}
+                setPopupVisible={setPopupVisible}
+                handleStart={handleStart}
+            />
         </QuestionsWrap>
     )
 }

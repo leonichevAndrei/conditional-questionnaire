@@ -83,7 +83,7 @@ export const QuestSubmit = styled.div`
 export const SubmitButton = styled.button`
     color: white;
     background-color: ${COL_PRIMARY};
-    border: none;
+    border: 1px solid ${COL_PRIMARY_DARK};
     padding: 12px 40px;
     border-radius: ${BORDER_RADIUS};
     font-size: 0.9em;
@@ -95,8 +95,9 @@ export const SubmitButton = styled.button`
     transition: box-shadow 1s; 
 `;
 
-export const QuestSubmitButton = styled.button`
+export const QuestSubmitButton = styled.div`
     ${BOX_SHADOW_ELMS};
+    border-radius: ${BORDER_RADIUS};
 `;
 
 type QuestionWrapProps = {
@@ -113,8 +114,8 @@ export const QuestionWrap = styled(SomeWrap)`
         : "display: none;"};
     animation: ${(props: QuestionWrapProps) => props.animate ? "showQuestion 1s ease forwards" : ""};
     @keyframes showQuestion {
-        0% {transform: translateX(-100%);}
-        100% {transform: translateY(0);}
+        0% {transform: translateX(100%); opacity:0%}
+        100% {transform: translateY(0); opacity: 100%}
     }
 `;
 

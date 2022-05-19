@@ -28,3 +28,14 @@ export type AnswerComponentSelectProps = {
         handleUpdate: (e: React.FormEvent<HTMLInputElement>) => void
     }
 }
+export type PopupStartProps = {
+    name: string,
+    setName: React.Dispatch<React.SetStateAction<string>>,
+    popupVisible: boolean,
+    setPopupVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    handleStart: () => void
+}
+export type PopupDialogProps = {
+    show: boolean,
+    children: React.ReactNode
+}
