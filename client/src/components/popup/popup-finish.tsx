@@ -1,7 +1,5 @@
-import { Fragment, useState } from "react";
-import { ERROR_MESS } from "../../settings/app-settings";
-import { TextInput, SubmitButton, RedElm, ExclamSign, CommonError } from "../../styled-components/common";
-import { PopupStartWrap, PopupStartTitle, PopupStartInput, PopupStartButton } from "../../styled-components/popup";
+import { SubmitButton } from "../../styled-components/common";
+import { PopupStartWrap, PopupStartTitle, PopupStartButton } from "../../styled-components/popup";
 import { PopupFinishProps } from "../../types/props";
 import PopupCommon from "./popup-builder";
 

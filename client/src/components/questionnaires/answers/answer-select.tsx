@@ -12,28 +12,37 @@ export default function AnswerSelect(props: AnswerComponentProps) {
     const [select, setSelect] = useState("");
     const [inputValue, setInputValue] = useState(SPECIAL_VAL);
 
+    // We need this SPECIAL_VAL to avoid autoselect of "other" item, 
+    // because it's initial value is "" (empty string) as well as the 
+    // answers's initial value
     useEffect(() => {
         setInputValue(SPECIAL_VAL);
         setSelect("");
     }, [name]);
 
+    // Updating answers state
     function handleUpdate(e: EventType) {
         updateAnswersState(e, answerGetById, question, answersList, setAnswersList);
     }
+    // Handling of select item changing
     function handleSelectChange(e: EventType) {
         setSelect(e.currentTarget.value);
         handleUpdate(e);
     };
+    // Handling when typing something in "other" section
     function handleOnInput(e: EventType) {
         setInputValue(e.currentTarget.value);
         handleSelectChange(e);
     }
+    // Handling onBlur event in "other" section to stay it selected
     function handleOnBlur() {
         if (inputValue === "") {
             setInputValue("");
         }
     }
 
+    // A function that returns the JSX element of the radio item
+    // with the condition that it can be "other" item
     function getSelectItem(answer: string, ind: number, other: boolean) {
         const value = other ? inputValue : answer;
         return (

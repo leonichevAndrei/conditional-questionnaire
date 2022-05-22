@@ -10,6 +10,8 @@ export default function Question(props: QuestionProps) {
     const { question, answersList, setAnswersList, error, name } = props;
     const [answerGetById, setAnswerGetById] = useState<number[]>(new Array());
 
+    // We create an array with key = question/answer id & value = answer
+    // index in answers list, to add get-answer-by-id possibility
     useEffect(() => {
         const arr = new Array();
         let ind = 0;
@@ -20,6 +22,8 @@ export default function Question(props: QuestionProps) {
         setAnswerGetById(arr);
     }, []);
 
+    // A function that returns the JSX element of the answer 
+    // based on its type (select (boolean) & text (boolean) properties)
     function buildAnswer(select: boolean, text: boolean) {
         const propsCombine = {
             answerGetById: answerGetById,
@@ -42,6 +46,10 @@ export default function Question(props: QuestionProps) {
         }
     }
 
+    // If type of current question is "conditional" and no specific
+    // condition happened,  we returning false. It means that we hide
+    // this question, untill some condition will happen. Or we returning
+    // true if it already happened and showing this item
     const checkConditional = useMemo(() => {
         const cond = question.conditional;
         if (typeof cond === "object" && answersList !== undefined && answerGetById.length > 0) {
@@ -55,6 +63,8 @@ export default function Question(props: QuestionProps) {
         return true;
     }, [question, answersList, answerGetById]);
 
+    // Checking the current item for a "conditional" type.
+    // This only affects the presence of animation.
     const isConditional = useMemo(() => {
         const cond = question.conditional;
         if (typeof cond === "object") {
