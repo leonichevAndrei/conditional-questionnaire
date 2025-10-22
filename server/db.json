@@ -61,5 +61,29 @@
       ]
     }
   ],
-  "answers": []
+  "answers": [
+    {
+      "name": "Andrei",
+      "questionnaire": 1,
+      "answers": [
+        {
+          "questionId": 1,
+          "answer": "TypeScript"
+        },
+        {
+          "questionId": 2,
+          "answer": "Cool stuff"
+        },
+        {
+          "questionId": 3,
+          "answer": "Implement something"
+        },
+        {
+          "questionId": 4,
+          "answer": "Easy"
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
